@@ -38,3 +38,29 @@ function getHumanChoice() {
 }
 
 // console.log(getComputerChoice() + " - " + getHumanChoice())
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === undefined) {
+        humanChoice = getComputerChoice();
+        console.log("You did not choose a valid input. Picking an option for you...");
+    }
+    
+    const informationalMessage = `You chose: ${humanChoice[0].toUpperCase() + humanChoice.slice(1)}` + `\nComputer chose: ${computerChoice[0].toUpperCase() + computerChoice.slice(1)}`;
+    
+    let outputMessage;
+    if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "paper" && computerChoice === "rock") || (humanChoice === "scissors" && computerChoice === "paper")) {
+        outputMessage = `You win! ${humanChoice[0].toUpperCase() + humanChoice.slice(1)} beats ${computerChoice}.`;
+        humanScore++;
+    } else if ((humanChoice === "rock" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "rock")) {
+        outputMessage = `You lose! ${computerChoice[0].toUpperCase() + computerChoice.slice(1)} beats ${humanChoice}.`;
+        computerScore++;
+    } else {
+        outputMessage = "It's a tie!";
+    }
+
+    console.log(informationalMessage)
+    console.log(outputMessage);
+}
