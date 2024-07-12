@@ -1,8 +1,12 @@
-// Number Correspondents: 0 - Rock, 1 - Paper, 2 - Scissors
+// Initialize global variables
+let humanScore = 0;
+let computerScore = 0;
 
+// Creates random number and then assigns rock, paper, or scissors from that random number
 function getComputerChoice() {
     let randomInt = Math.floor(Math.random() * 3);
     
+    // Number Correspondents: 0 - Rock, 1 - Paper, 2 - Scissors
     let computerChoice;
     if (randomInt === 0) {
         computerChoice = "rock";
@@ -15,6 +19,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+// Prompts user for option. Returns value in all lowercase
 function getHumanChoice() {
     let userResponse = prompt("What would you like to pick? Rock, Paper, or Scissors?")
 
@@ -37,9 +42,7 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-let humanScore = 0;
-let computerScore = 0;
-
+// Determines a choice for the user if there is none, then evaluates who wins and increments corresponding score
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === undefined) {
         humanChoice = getComputerChoice();
@@ -63,6 +66,7 @@ function playRound(humanChoice, computerChoice) {
     console.log(outputMessage);
 }
 
+// Calls playRound() 5 times to simulate 5 rounds, then determines who won the game by evaluating humanScore and computerScore
 function playGame() {
     for (i = 0; i < 5; i++) {
         playRound(getHumanChoice(), getComputerChoice());
@@ -78,3 +82,5 @@ function playGame() {
     }
 }
 
+// Starts game
+playGame()
